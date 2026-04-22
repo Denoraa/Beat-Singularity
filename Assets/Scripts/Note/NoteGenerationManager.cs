@@ -49,17 +49,12 @@ public class NoteGenerationManager : MonoBehaviour
                 yield return null;
             }
 
-            SpawnNote(noteData);
+            EventBus.Publish(new GameEvents.NoteSpawnEvent(noteData));
 
             i++;
         }
 
         Debug.Log("All notes generated.");
-    }
-
-    private void SpawnNote(NoteData noteData)
-    {
-        throw new NotImplementedException();
     }
 
     private void OnLevelEnd(GameEvents.LevelEndEvent eventData)

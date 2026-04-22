@@ -29,5 +29,15 @@ public static class GameEvents
         }
     }
     public struct LevelEndEvent { }
+
+    public class NoteSpawnEvent
+    {
+        public NoteData noteData;
+
+        public NoteSpawnEvent(NoteData noteData)
+        {
+            this.noteData = noteData;
+        }
+    }
     //LEVEL EVENTS
 }

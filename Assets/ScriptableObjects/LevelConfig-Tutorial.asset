@@ -12,7 +12,232 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc3765ca3e6fd540afe9aba92a14395, type: 3}
   m_Name: LevelConfig-Tutorial
   m_EditorClassIdentifier: 
+  csvFile: {fileID: 4900000, guid: 88c36c263e502df4e828c2494806d2b8, type: 3}
   SongName: Tutorial
-  BPM: 120
+  bpm: 120
   SongAudioClip: {fileID: 8300000, guid: 78cc5102472ec5640a9341b7df9bde08, type: 3}
-  noteDataList: []
+  noteDataList:
+  - measure: 1
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 0
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 2
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 2
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 3
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 4
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 4
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 6
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 5
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 8
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 6
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 10
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 7
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 12
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 8
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 14
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 9
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 16
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 10
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 18
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 11
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 20
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 12
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 22
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 13
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 24
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 14
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 26
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 15
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 28
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 16
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 30
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 17
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 32
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 18
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 34
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 19
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 36
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 20
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 38
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 21
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 40
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 22
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 42
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 23
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 44
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 24
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 46
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 25
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 48
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 26
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 50
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 27
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 52
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 28
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 54
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 29
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 56
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 30
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 58
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 31
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 60
+    speed: 8.5
+    spawnLeadTime: 2
+  - measure: 32
+    beat: 1
+    lane: 0
+    type: Tap
+    hitTime: 62
+    speed: 8.5
+    spawnLeadTime: 2

@@ -6,6 +6,15 @@ public class LevelFlowManager : MonoSingleton<LevelFlowManager>
 {
     private AudioClip currentSong = null;
     private float SongDuration = 0;
+
+    //Test File
+    [SerializeField] private LevelConfigSO testLevelConfig;
+
+    private void Start()
+    {
+        StartCoroutine(StartLevelFlow(testLevelConfig));
+    }
+
     public IEnumerator StartLevelFlow(LevelConfigSO levelConfig)
     {
         InitSongData(levelConfig);
