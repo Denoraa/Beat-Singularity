@@ -6,6 +6,16 @@ using UnityEngine;
 public class LevelConfigSO : ScriptableObject
 {
     [SerializeField] public string SongName = "Default";
-    [SerializeField] public int SongDuration = 0;
+    [SerializeField] public int BPM = 0;
+    [SerializeField] public AudioClip SongAudioClip;
+    [SerializeField] public List<NoteData> noteDataList = new List<NoteData>();
 
+}
+
+
+[System.Serializable]
+public struct NoteData
+{
+    public float hitTime;
+    public NoteType noteType;
 }
