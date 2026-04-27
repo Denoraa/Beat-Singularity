@@ -3,13 +3,9 @@ using System.Collections.Generic;
 public static class GameEvents
 {
     //BUTTON EVENTS
-    public struct JHitEvent { }
-    public struct KHitEvent { }
-    public struct LHitEvent { }
+    public struct LeftHitEvent { }
 
-    public struct SHitEvent { }
-    public struct DHitEvent { }
-    public struct FHitEvent { }
+    public struct RightHitEvent { }
 
     public struct LeftHoldStartEvent { }
     public struct LeftHoldEndEvent { }

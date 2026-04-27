@@ -28,7 +28,7 @@ public class Note : MonoBehaviour
                     spriteRenderer.color = Color.red;
                     break;
             }
-        rb.velocity = new Vector2(-noteData.speed*2, 0);
+        rb.velocity = new Vector2(-noteData.speed, 0);
 
     }
 

@@ -21,6 +21,7 @@ public enum NoteType
     Tap = 0,
     Hold = 1,
     Speed = 2,   
+    Blank = 3,
 }
 
 

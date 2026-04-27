@@ -52,11 +52,11 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 
-    private GameObject GetPrefabByType(string noteType)
+    private GameObject GetPrefabByType(NoteType noteType)
     {
         switch (noteType)
         {
-            case "Tap":
+            case NoteType.Tap:
                 return tapNotePrefab;
             default:
                 Debug.LogWarning($"未知 note type: {noteType}");

@@ -7,7 +7,7 @@
             "id": "226f8240-4014-425b-8e1a-d92e331abcb9",
             "actions": [
                 {
-                    "name": "NoteHitLeft",
+                    "name": "NoteHitS",
                     "type": "Button",
                     "id": "df17f3f1-2893-493c-88d0-92a1e5c72299",
                     "expectedControlType": "",
@@ -16,9 +16,45 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "NoteHitRight",
+                    "name": "NoteHitD",
                     "type": "Button",
                     "id": "dca355e6-142f-47e6-a138-a05a3bcabb4f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NoteHitF",
+                    "type": "Button",
+                    "id": "9bbe4b46-4992-423e-bfd0-105a76394484",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NoteHitJ",
+                    "type": "Button",
+                    "id": "733a13dd-7af6-468e-948d-bfec528194a1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NoteHitK",
+                    "type": "Button",
+                    "id": "52afa6ec-713d-41f7-94ba-9ddf19403600",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NoteHitL",
+                    "type": "Button",
+                    "id": "2d32a7d5-b31b-43c7-83fa-ebe2ac64fbe4",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -28,67 +64,67 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "e7a151b3-62b2-496d-bfab-37d97fce26b6",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NoteHitLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dadb416f-b250-416e-a42a-9a22de81f48d",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NoteHitLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "de658490-955b-43e0-89a8-be2948b8e891",
+                    "id": "183d2444-f4ea-4a71-b15c-3806776d026a",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NoteHitLeft",
+                    "action": "NoteHitF",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "ef7315af-2133-4109-97a4-4acecd0fe75e",
+                    "id": "6ed91a66-0280-451f-b368-ed07a443a50c",
                     "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NoteHitRight",
+                    "action": "NoteHitJ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "53e53832-5bab-4c95-9fdd-cd81e7884a00",
+                    "id": "16d40ba8-b16b-4a6b-90ef-975fceff9ea6",
                     "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NoteHitRight",
+                    "action": "NoteHitK",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "206217b1-d799-44f9-bd03-9b04ba9efc3c",
+                    "id": "4793ce17-d873-4fdf-8b86-cb1d25932cd5",
                     "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "NoteHitRight",
+                    "action": "NoteHitL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f053638-59c1-4660-83ed-aae95438bad5",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NoteHitS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43938f20-68cb-47a6-8eaf-5120b3f4d95e",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NoteHitD",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

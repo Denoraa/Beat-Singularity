@@ -7,8 +7,13 @@ public class InputController : MonoBehaviour
 {
 
     private PlayerInput playerInput;
-    private InputAction leftHitAction;
-    private InputAction rightHitAction;
+    private InputAction SHitAction;
+    private InputAction DHitAction;
+    private InputAction FHitAction;
+    private InputAction JHitAction;
+    private InputAction KHitAction;
+    private InputAction LHitAction;
+
 
 
     private void Awake()
@@ -18,40 +23,54 @@ public class InputController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (leftHitAction != null)
-            leftHitAction.performed += OnLeftHitPerformed;
+        if (SHitAction != null)
+            SHitAction.performed += OnLeftHitPerformed;
 
-        if (rightHitAction != null)
-            rightHitAction.performed += OnRightHitPerformed;
+        if (DHitAction != null)
+            DHitAction.performed += OnLeftHitPerformed;
+
+        if (FHitAction != null)
+            FHitAction.performed += OnLeftHitPerformed;
+
+        if (JHitAction != null)
+            JHitAction.performed += OnRightHitPerformed;
+
+        if (KHitAction != null)
+            KHitAction.performed += OnRightHitPerformed;
+
+        if (LHitAction != null)
+            LHitAction.performed += OnRightHitPerformed;
     }
 
     private void OnDisable()
     {
-        if (leftHitAction != null)
-            leftHitAction.performed -= OnLeftHitPerformed;
+        if (SHitAction != null)
+            SHitAction.performed -= OnLeftHitPerformed;
 
-        if (rightHitAction != null)
-            rightHitAction.performed -= OnRightHitPerformed;
+        if (DHitAction != null)
+            DHitAction.performed -= OnLeftHitPerformed;
+
+        if (FHitAction != null)
+            FHitAction.performed -= OnLeftHitPerformed;
+
+        if (JHitAction != null)
+            JHitAction.performed -= OnRightHitPerformed;
+
+        if (KHitAction != null)
+            KHitAction.performed -= OnRightHitPerformed;
+
+        if (LHitAction != null)
+            LHitAction.performed -= OnRightHitPerformed;
     }
 
     private void OnLeftHitPerformed(InputAction.CallbackContext ctx)
     {
-        if (ctx.control == Keyboard.current.sKey)
-            EventBus.Publish(new GameEvents.SHitEvent());
-        else if (ctx.control == Keyboard.current.dKey)
-            EventBus.Publish(new GameEvents.DHitEvent());
-        else if (ctx.control == Keyboard.current.fKey)
-            EventBus.Publish(new GameEvents.FHitEvent());
+            EventBus.Publish(new GameEvents.LeftHitEvent());
     }
 
     private void OnRightHitPerformed(InputAction.CallbackContext ctx)
     {
-        if (ctx.control == Keyboard.current.jKey)
-            EventBus.Publish(new GameEvents.JHitEvent());
-        else if (ctx.control == Keyboard.current.kKey)
-            EventBus.Publish(new GameEvents.KHitEvent());
-        else if (ctx.control == Keyboard.current.lKey)
-            EventBus.Publish(new GameEvents.LHitEvent());
+            EventBus.Publish(new GameEvents.RightHitEvent());
     }
 
     private void Init()
@@ -60,8 +79,12 @@ public class InputController : MonoBehaviour
 
         if (playerInput != null)
         {
-            leftHitAction = playerInput.actions["NoteHitLeft"];
-            rightHitAction = playerInput.actions["NoteHitRight"];
+            SHitAction = playerInput.actions["NoteHitS"];
+            DHitAction = playerInput.actions["NoteHitD"];
+            FHitAction = playerInput.actions["NoteHitF"];
+            JHitAction = playerInput.actions["NoteHitJ"];
+            KHitAction = playerInput.actions["NoteHitK"];
+            LHitAction = playerInput.actions["NoteHitL"];
         }
 
     }

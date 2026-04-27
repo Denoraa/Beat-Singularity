@@ -3,14 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoteGenerationManager : MonoBehaviour
+public class NoteGenerationManager : MonoSingleton<NoteGenerationManager>
 {
-
-    private float spawnLeadTime = 2.0f;
 
     private AudioSource musicSource;
 
-    public void Awake()
+    protected override void OnAwake()
     {
         musicSource = MusicManager.Instance.MusicSource;
     }
@@ -42,14 +40,11 @@ public class NoteGenerationManager : MonoBehaviour
         {
             NoteData noteData = noteDatas[i];
 
-            float spawnTime = noteData.hitTime - spawnLeadTime;
-
-            while (musicSource.time < spawnTime)
-            {
+            while (musicSource.time < noteData.spawnTime)
                 yield return null;
-            }
 
-            EventBus.Publish(new GameEvents.NoteSpawnEvent(noteData));
+            if (noteData.type != NoteType.Blank)
+                EventBus.Publish(new GameEvents.NoteSpawnEvent(noteData));
 
             i++;
         }
@@ -62,7 +57,7 @@ public class NoteGenerationManager : MonoBehaviour
         throw new NotImplementedException();
     }
 
-
+    
 
 
 }
