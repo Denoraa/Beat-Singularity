@@ -3,15 +3,15 @@ using System.Collections.Generic;
 public static class GameEvents
 {
     //BUTTON EVENTS
-    public struct LeftHitEvent { }
+    public struct DownHitEvent { }
 
-    public struct RightHitEvent { }
+    public struct TopHitEvent { }
 
-    public struct LeftHoldStartEvent { }
-    public struct LeftHoldEndEvent { }
+    public struct DownHoldStartEvent { }
+    public struct DownHoldEndEvent { }
 
-    public struct RightHoldStartEvent { }
-    public struct RightHoldEndEvent { }
+    public struct TopHoldStartEvent { }
+    public struct TopHoldEndEvent { }
     //BUTTON EVENTS
 
     //LEVEL EVENTS
@@ -29,10 +29,11 @@ public static class GameEvents
     public class NoteSpawnEvent
     {
         public NoteData noteData;
-
-        public NoteSpawnEvent(NoteData noteData)
+        public DifficultyConfigSO difficultyConfig;
+        public NoteSpawnEvent(NoteData noteData, DifficultyConfigSO difficultyConfig)
         {
             this.noteData = noteData;
+            this.difficultyConfig = difficultyConfig;
         }
     }
     //LEVEL EVENTS

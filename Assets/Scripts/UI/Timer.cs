@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
     {
         if (!isTiming) return;
 
-        time += Time.deltaTime;
+        time = MusicManager.Instance.MusicSource.time;
 
         if (timerText != null)
         {

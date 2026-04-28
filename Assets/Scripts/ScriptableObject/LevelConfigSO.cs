@@ -10,6 +10,7 @@ public class LevelConfigSO : ScriptableObject
     [SerializeField] public int bpm = 0;
     [SerializeField] public AudioClip SongAudioClip;
     [SerializeField] public List<NoteData> noteDataList = new List<NoteData>();
+    [SerializeField] public DifficultyConfigSO difficultyConfig;
 
 }
 

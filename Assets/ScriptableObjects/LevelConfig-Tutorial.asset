@@ -273,3 +273,4 @@ MonoBehaviour:
     speed: 17
     spawnLeadTime: 1
     spawnTime: 61.3
+  difficultyConfig: {fileID: 11400000, guid: 59f834adbf9b0e04a9339f98bb341f21, type: 2}

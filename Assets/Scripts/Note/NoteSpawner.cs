@@ -28,13 +28,6 @@ public class NoteSpawner : MonoBehaviour
             Debug.LogError("laneSpawnPoints 没有设置");
             return;
         }
-
-        if (noteData.lane < 0 || noteData.lane >= laneSpawnPoints.Length)
-        {
-            Debug.LogError($"lane 索引越界: {noteData.lane}");
-            return;
-        }
-
         GameObject prefab = GetPrefabByType(noteData.type);
         if (prefab == null)
         {
@@ -42,13 +35,13 @@ public class NoteSpawner : MonoBehaviour
             return;
         }
 
-        Transform spawnPoint = laneSpawnPoints[noteData.lane];
+        Transform spawnPoint = laneSpawnPoints[((int)noteData.lane)];
         GameObject noteObj = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
 
         Note noteComponent = noteObj.GetComponent<Note>();
         if (noteComponent != null)
         {
-            noteComponent.Initialize(noteData);
+            noteComponent.Initialize(noteData,eventData.difficultyConfig);
         }
     }
 

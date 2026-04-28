@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class Note : MonoBehaviour
 {
-
-    private NoteData noteData;
+    public NoteData NoteData { get; private set; }
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     
-    internal void Initialize(NoteData noteData)
+    internal void Initialize(NoteData noteData,DifficultyConfigSO difficulty)
     {
-        this.noteData = noteData;
+        this.NoteData = noteData;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -21,15 +20,26 @@ public class Note : MonoBehaviour
         if (spriteRenderer != null)
             switch(noteData.lane)
             {
-                case 0:
+                case LaneType.Top:
                     spriteRenderer.color = Color.blue;
                     break;
-                case 1:
+                case LaneType.Down:
                     spriteRenderer.color = Color.red;
                     break;
             }
         rb.velocity = new Vector2(-noteData.speed, 0);
 
+        float cycleTime = difficulty.badThreshold + 1f; // 确保音符在 bad 阈值后被销毁
+
+        StartCoroutine(LifeCycle(difficulty.badThreshold));
+    }
+
+    private IEnumerator LifeCycle(float cycleTime)
+    {
+        ActiveNoteManager.Instance.RegisterNote(this);
+        yield return new WaitForSeconds(cycleTime);
+        ActiveNoteManager.Instance.UnregisterNote(this);
+        Destroy(gameObject);
     }
 
 }

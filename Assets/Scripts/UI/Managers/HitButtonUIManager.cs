@@ -26,13 +26,13 @@ public class HitButtonUIManager : MonoBehaviour
                 case HitBut.S:
                 case HitBut.D:
                 case HitBut.F:
-                    hitButtonUI.Init<GameEvents.LeftHitEvent>();
+                    hitButtonUI.Init<GameEvents.DownHitEvent>();
                     break;
 
                 case HitBut.J:
                 case HitBut.K:
                 case HitBut.L:
-                    hitButtonUI.Init<GameEvents.RightHitEvent>();
+                    hitButtonUI.Init<GameEvents.TopHitEvent>();
                     break;
             }
         }

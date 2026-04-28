@@ -44,7 +44,7 @@ public class NoteGenerationManager : MonoSingleton<NoteGenerationManager>
                 yield return null;
 
             if (noteData.type != NoteType.Blank)
-                EventBus.Publish(new GameEvents.NoteSpawnEvent(noteData));
+                EventBus.Publish(new GameEvents.NoteSpawnEvent(noteData,levelConfig.difficultyConfig));
 
             i++;
         }

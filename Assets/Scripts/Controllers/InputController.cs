@@ -65,12 +65,12 @@ public class InputController : MonoBehaviour
 
     private void OnLeftHitPerformed(InputAction.CallbackContext ctx)
     {
-            EventBus.Publish(new GameEvents.LeftHitEvent());
+            EventBus.Publish(new GameEvents.DownHitEvent());
     }
 
     private void OnRightHitPerformed(InputAction.CallbackContext ctx)
     {
-            EventBus.Publish(new GameEvents.RightHitEvent());
+            EventBus.Publish(new GameEvents.TopHitEvent());
     }
 
     private void Init()

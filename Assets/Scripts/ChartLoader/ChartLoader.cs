@@ -38,7 +38,8 @@ public static class ChartLoader
             NoteData note = new NoteData();
             note.measure = int.Parse(cells[0].Trim());
             note.beat = float.Parse(cells[1].Trim(), CultureInfo.InvariantCulture);
-            note.lane = int.Parse(cells[2].Trim());
+            note.lane = ConvertLaneType(cells[2].Trim());
+
             note.type = ConvertType(cells[3].Trim());
             note.spawnLeadTime = float.Parse(cells[4].Trim());
             note.hitTime = ConvertToTime(note.measure, note.beat, bpm);
@@ -74,6 +75,20 @@ public static class ChartLoader
             default:
                 Debug.LogWarning($"未知的音符类型: {typeStr}");
                 return NoteType.Tap; // 默认类型
+        }
+    }
+
+    private static LaneType ConvertLaneType(string laneStr)
+    {
+        switch (laneStr)
+        {
+            case "Top":
+                return LaneType.Top;
+            case "Down":
+                return LaneType.Down;
+            default:
+                Debug.LogWarning($"未知的 lane 类型: {laneStr}");
+                return LaneType.Top; // 默认类型
         }
     }
 }

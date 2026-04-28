@@ -24,4 +24,10 @@ public enum NoteType
     Blank = 3,
 }
 
+public enum LaneType
+{
+    Top = 0,
+    Down = 1,
+}
+
 
