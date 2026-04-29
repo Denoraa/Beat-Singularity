@@ -9,7 +9,7 @@ public class Note : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    
+    private bool isConsumed = false;
     internal void Initialize(NoteData noteData,DifficultyConfigSO difficulty)
     {
         this.NoteData = noteData;
@@ -29,17 +29,40 @@ public class Note : MonoBehaviour
             }
         rb.velocity = new Vector2(-noteData.speed, 0);
 
-        float cycleTime = difficulty.badThreshold + 1f; // 确保音符在 bad 阈值后被销毁
 
         StartCoroutine(LifeCycle(difficulty.badThreshold));
     }
-
-    private IEnumerator LifeCycle(float cycleTime)
+    internal bool Consume()
     {
-        ActiveNoteManager.Instance.RegisterNote(this);
-        yield return new WaitForSeconds(cycleTime);
+        if (isConsumed)
+            return false;
+
+        isConsumed = true;
         ActiveNoteManager.Instance.UnregisterNote(this);
         Destroy(gameObject);
+        return true;
+    }
+
+    private IEnumerator LifeCycle(float badThreshold)
+    {
+        ActiveNoteManager.Instance.RegisterNote(this);
+
+        while (!isConsumed)
+        {
+            if (MusicManager.Instance != null && MusicManager.Instance.MusicSource != null)
+            {
+                float missTime = NoteData.hitTime + badThreshold;
+                if (MusicManager.Instance.MusicSource.time > missTime)
+                {
+                    Debug.Log("Miss");
+                    EventBus.Publish(new GameEvents.NoteJudgeEvent(HitResult.Miss));
+                    Consume();
+                    yield break;
+                }
+            }
+
+            yield return null;
+        }
     }
 
 }

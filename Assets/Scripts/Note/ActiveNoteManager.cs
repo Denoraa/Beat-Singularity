@@ -43,4 +43,20 @@ public class ActiveNoteManager : Singleton<ActiveNoteManager>
         else
             return activeDownNotes;
     }
+
+    public void ClearAllNotes()
+    {
+        List<Note> notes = new List<Note>();
+        notes.AddRange(activeTopNotes);
+        notes.AddRange(activeDownNotes);
+
+        foreach (Note note in notes)
+        {
+            if (note != null)
+                note.Consume();
+        }
+
+        activeTopNotes.Clear();
+        activeDownNotes.Clear();
+    }
 }

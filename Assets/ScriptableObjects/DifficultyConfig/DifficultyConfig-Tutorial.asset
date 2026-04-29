@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbe95af8c7f82f41b34d416e4b7d4ad, type: 3}
   m_Name: DifficultyConfig-Tutorial
   m_EditorClassIdentifier: 
-  perfectThreshold: 0.2
-  goodThreshold: 0.6
-  badThreshold: 1
+  perfectThreshold: 0.05
+  goodThreshold: 0.15
+  badThreshold: 0.2

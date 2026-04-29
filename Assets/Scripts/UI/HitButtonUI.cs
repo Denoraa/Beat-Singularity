@@ -26,7 +26,7 @@ public class HitButtonUI : MonoBehaviour
     {
         image = GetComponent<Image>();
 
-        Color color = new Color(1f, 1f, 1f, 0.5f);
+        Color color = new Color(image.color.r, image.color.g, image.color.b, 0.5f);
         image.color = color;
     }
 

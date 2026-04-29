@@ -17,11 +17,13 @@ public class MusicManager : MonoSingleton<MusicManager>
     private void OnEnable()
     {
         EventBus.Subscribe<GameEvents.LevelStartEvent>(OnLevelStart);
+        EventBus.Subscribe<GameEvents.LevelEndEvent>(OnLevelEnd);
     }
 
     private void OnDisable()
     {
         EventBus.Unsubscribe<GameEvents.LevelStartEvent>(OnLevelStart);
+        EventBus.Unsubscribe<GameEvents.LevelEndEvent>(OnLevelEnd);
     }
 
 
@@ -35,6 +37,12 @@ public class MusicManager : MonoSingleton<MusicManager>
         musicSource.clip = eventData.levelConfig.SongAudioClip;
 
         musicSource.Play();
+    }
+
+    private void OnLevelEnd(GameEvents.LevelEndEvent eventData)
+    {
+        if (musicSource != null)
+            musicSource.Stop();
     }
 
     public AudioSource MusicSource

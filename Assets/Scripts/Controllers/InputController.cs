@@ -13,6 +13,7 @@ public class InputController : MonoBehaviour
     private InputAction JHitAction;
     private InputAction KHitAction;
     private InputAction LHitAction;
+    private bool isLevelActive;
 
 
 
@@ -40,6 +41,9 @@ public class InputController : MonoBehaviour
 
         if (LHitAction != null)
             LHitAction.performed += OnRightHitPerformed;
+
+        EventBus.Subscribe<GameEvents.LevelStartEvent>(OnLevelStart);
+        EventBus.Subscribe<GameEvents.LevelEndEvent>(OnLevelEnd);
     }
 
     private void OnDisable()
@@ -61,16 +65,25 @@ public class InputController : MonoBehaviour
 
         if (LHitAction != null)
             LHitAction.performed -= OnRightHitPerformed;
+
+        EventBus.Unsubscribe<GameEvents.LevelStartEvent>(OnLevelStart);
+        EventBus.Unsubscribe<GameEvents.LevelEndEvent>(OnLevelEnd);
     }
 
     private void OnLeftHitPerformed(InputAction.CallbackContext ctx)
     {
-            EventBus.Publish(new GameEvents.DownHitEvent());
+        if (!isLevelActive)
+            return;
+
+        EventBus.Publish(new GameEvents.DownHitEvent());
     }
 
     private void OnRightHitPerformed(InputAction.CallbackContext ctx)
     {
-            EventBus.Publish(new GameEvents.TopHitEvent());
+        if (!isLevelActive)
+            return;
+
+        EventBus.Publish(new GameEvents.TopHitEvent());
     }
 
     private void Init()
@@ -85,7 +98,31 @@ public class InputController : MonoBehaviour
             JHitAction = playerInput.actions["NoteHitJ"];
             KHitAction = playerInput.actions["NoteHitK"];
             LHitAction = playerInput.actions["NoteHitL"];
+            SetInputEnabled(false);
         }
 
+    }
+
+    private void OnLevelStart(GameEvents.LevelStartEvent eventData)
+    {
+        isLevelActive = true;
+        SetInputEnabled(true);
+    }
+
+    private void OnLevelEnd(GameEvents.LevelEndEvent eventData)
+    {
+        isLevelActive = false;
+        SetInputEnabled(false);
+    }
+
+    private void SetInputEnabled(bool isEnabled)
+    {
+        if (playerInput == null || playerInput.actions == null)
+            return;
+
+        if (isEnabled)
+            playerInput.actions.Enable();
+        else
+            playerInput.actions.Disable();
     }
 }

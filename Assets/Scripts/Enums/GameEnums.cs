@@ -12,8 +12,9 @@ public enum HitBut
 public enum HitResult
 {
     Miss = 0,
-    Good = 1,
-    Perfect = 2,
+    Bad = 1,
+    Good = 2,
+    Perfect = 3,
 }
 
 public enum NoteType

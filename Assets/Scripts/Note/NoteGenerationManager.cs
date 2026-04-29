@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +6,8 @@ public class NoteGenerationManager : MonoSingleton<NoteGenerationManager>
 {
 
     private AudioSource musicSource;
+    private Coroutine generatingCoroutine;
+    private bool isGenerating;
 
     protected override void OnAwake()
     {
@@ -26,22 +27,33 @@ public class NoteGenerationManager : MonoSingleton<NoteGenerationManager>
     }
     private void OnLevelStart(GameEvents.LevelStartEvent eventData)
     {
-        StartCoroutine(StartGenerating(eventData.levelConfig));
+        StopGenerating();
+        isGenerating = true;
+        generatingCoroutine = StartCoroutine(StartGenerating(eventData.levelConfig));
     }
     private IEnumerator StartGenerating(LevelConfigSO levelConfig)
     {
         if (levelConfig == null || levelConfig.noteDataList == null || levelConfig.noteDataList.Count == 0)
             yield break;
 
+        if (musicSource == null && MusicManager.Instance != null)
+            musicSource = MusicManager.Instance.MusicSource;
+
+        if (musicSource == null)
+            yield break;
+
         List<NoteData> noteDatas = levelConfig.noteDataList;
         int i = 0;
 
-        while (i < noteDatas.Count)
+        while (isGenerating && i < noteDatas.Count)
         {
             NoteData noteData = noteDatas[i];
 
-            while (musicSource.time < noteData.spawnTime)
+            while (isGenerating && musicSource.time < noteData.spawnTime)
                 yield return null;
+
+            if (!isGenerating)
+                yield break;
 
             if (noteData.type != NoteType.Blank)
                 EventBus.Publish(new GameEvents.NoteSpawnEvent(noteData,levelConfig.difficultyConfig));
@@ -49,15 +61,26 @@ public class NoteGenerationManager : MonoSingleton<NoteGenerationManager>
             i++;
         }
 
+        generatingCoroutine = null;
         Debug.Log("All notes generated.");
     }
 
     private void OnLevelEnd(GameEvents.LevelEndEvent eventData)
     {
-        throw new NotImplementedException();
+        StopGenerating();
+        ActiveNoteManager.Instance.ClearAllNotes();
     }
 
-    
+    private void StopGenerating()
+    {
+        isGenerating = false;
+
+        if (generatingCoroutine != null)
+        {
+            StopCoroutine(generatingCoroutine);
+            generatingCoroutine = null;
+        }
+    }
 
 
 }

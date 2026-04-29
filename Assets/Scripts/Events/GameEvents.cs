@@ -36,5 +36,25 @@ public static class GameEvents
             this.difficultyConfig = difficultyConfig;
         }
     }
+
+    public struct NoteJudgeEvent
+    {
+        public HitResult hitResult;
+
+        public NoteJudgeEvent(HitResult hitResult)
+        {
+            this.hitResult = hitResult;
+        }
+    }
+
+    public struct ScoreUpdateEvent
+    {
+        public int currentScore;
+
+        public ScoreUpdateEvent(int currentScore)
+        {
+            this.currentScore = currentScore;
+        }
+    }
     //LEVEL EVENTS
 }
