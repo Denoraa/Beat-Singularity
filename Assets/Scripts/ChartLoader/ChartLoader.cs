@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ChartLoader
 {
-    private const float hitOffset = 0.4f; //由于unity audio系统的延迟，音符需要提前0.3秒生成以确保准时到达
+    private const float hitOffset = 0.2f; //由于unity audio系统的延迟，音符需要提前0.3秒生成以确保准时到达
     public static List<NoteData> LoadCSV(TextAsset csvFile, int bpm)
     {
         List<NoteData> noteList = new List<NoteData>();
