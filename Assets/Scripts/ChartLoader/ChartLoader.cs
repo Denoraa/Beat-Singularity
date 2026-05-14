@@ -72,6 +72,8 @@ public static class ChartLoader
                 return NoteType.Speed;
             case "Blank":
                 return NoteType.Blank;
+            case "BlackHole":
+                return NoteType.BlackHole;
             default:
                 Debug.LogWarning($"未知的音符类型: {typeStr}");
                 return NoteType.Tap; // 默认类型

@@ -23,6 +23,7 @@ public enum NoteType
     Hold = 1,
     Speed = 2,   
     Blank = 3,
+    BlackHole = 4,
 }
 
 public enum LaneType
@@ -30,5 +31,4 @@ public enum LaneType
     Top = 0,
     Down = 1,
 }
-
 

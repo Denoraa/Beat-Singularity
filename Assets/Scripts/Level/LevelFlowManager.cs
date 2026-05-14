@@ -34,6 +34,7 @@ public class LevelFlowManager : MonoSingleton<LevelFlowManager>
         levelEnded = false;
         HideGameOverUI();
         InitSongData(levelConfig);
+        FeverManager.Instance.SetConfig(levelConfig.feverConfig);
 
         EventBus.Publish(new GameEvents.LevelStartEvent(levelConfig));
 
@@ -129,5 +130,4 @@ public class LevelFlowManager : MonoSingleton<LevelFlowManager>
         gameOverPanel.SetActive(true);
     }
 }
-
 

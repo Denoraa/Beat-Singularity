@@ -578,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tapNotePrefab: {fileID: 6852616530341062171, guid: 957db725089021a4c93fab7710f7854d, type: 3}
+  blackHoleNotePrefab: {fileID: 6852616530341062171, guid: 7f26171fd6ea5484baf363fca5641e06, type: 3}
   laneSpawnPoints:
   - {fileID: 151153249}
   - {fileID: 650336981}

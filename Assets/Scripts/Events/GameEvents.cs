@@ -56,5 +56,17 @@ public static class GameEvents
             this.currentScore = currentScore;
         }
     }
+
+    public struct FeverStartEvent
+    {
+        public float duration;
+
+        public FeverStartEvent(float duration)
+        {
+            this.duration = duration;
+        }
+    }
+
+    public struct FeverEndEvent { }
     //LEVEL EVENTS
 }

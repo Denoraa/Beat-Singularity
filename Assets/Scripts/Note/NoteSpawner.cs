@@ -3,6 +3,7 @@ using UnityEngine;
 public class NoteSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject tapNotePrefab;
+    [SerializeField] private GameObject blackHoleNotePrefab;
     [SerializeField] private Transform[] laneSpawnPoints;
 
     private void OnEnable()
@@ -51,6 +52,8 @@ public class NoteSpawner : MonoBehaviour
         {
             case NoteType.Tap:
                 return tapNotePrefab;
+            case NoteType.BlackHole:
+                return blackHoleNotePrefab != null ? blackHoleNotePrefab : tapNotePrefab;
             default:
                 Debug.LogWarning($"未知 note type: {noteType}");
                 return null;

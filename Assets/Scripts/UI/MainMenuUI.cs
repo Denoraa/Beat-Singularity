@@ -10,11 +10,15 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button settingButton;
     [SerializeField] private Button quitButton;
 
-    private void OnEnable()
+    private void Start()
     {
-        startButton.onClick.AddListener(OnStartButtonClicked);
-        settingButton.onClick.AddListener(OnSettingButtonClicked);
-        quitButton.onClick.AddListener(OnQuitButtonClicked);
+        startButton = transform.Find("StartButt").GetComponent<Button>();
+        settingButton = transform.Find("SettingButt").GetComponent<Button>();
+        quitButton = transform.Find("QuitButt").GetComponent<Button>();
+
+        // startButton.onClick.AddListener(OnStartButtonClicked);
+        // settingButton.onClick.AddListener(OnSettingButtonClicked);
+        // quitButton.onClick.AddListener(OnQuitButtonClicked);
     }
     private void OnStartButtonClicked()
     {
@@ -22,7 +26,7 @@ public class MainMenuUI : MonoBehaviour
     }
     private void OnSettingButtonClicked()
     {
-        throw new NotImplementedException();
+        //
     }
     private void OnQuitButtonClicked()
     {

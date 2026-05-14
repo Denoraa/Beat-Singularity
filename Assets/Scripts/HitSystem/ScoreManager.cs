@@ -29,26 +29,29 @@ public class ScoreManager : MonoSingleton<ScoreManager>
 
     private void OnNoteJudge(GameEvents.NoteJudgeEvent eventData)
     {
+        int baseScore = 0;
+
         switch (eventData.hitResult)
         {
             case HitResult.Perfect:
                 PerfectCount++;
-                CurrentScore += scoreConfig.perfectScore;
+                baseScore = scoreConfig.perfectScore;
                 break;
             case HitResult.Good:
                 GoodCount++;
-                CurrentScore += scoreConfig.goodScore;
+                baseScore = scoreConfig.goodScore;
                 break;
             case HitResult.Bad:
                 BadCount++;
-                CurrentScore += scoreConfig.badScore;
+                baseScore = scoreConfig.badScore;
                 break;
             case HitResult.Miss:
                 MissCount++;
-                CurrentScore += scoreConfig.missScore;
+                baseScore = scoreConfig.missScore;
                 break;
         }
 
+        CurrentScore += Mathf.RoundToInt(baseScore * FeverManager.Instance.ScoreMultiplier);
         EventBus.Publish(new GameEvents.ScoreUpdateEvent(CurrentScore));
     }
 

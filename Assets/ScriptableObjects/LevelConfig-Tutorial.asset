@@ -36,7 +36,7 @@ MonoBehaviour:
   - measure: 3
     beat: 1
     lane: 0
-    type: 0
+    type: 4
     hitTime: 4.2
     speed: 15.51
     spawnLeadTime: 1
@@ -274,3 +274,4 @@ MonoBehaviour:
     spawnLeadTime: 1
     spawnTime: 61.2
   difficultyConfig: {fileID: 11400000, guid: 59f834adbf9b0e04a9339f98bb341f21, type: 2}
+  feverConfig: {fileID: 11400000, guid: b44e201a9b74245009c8014b12648bea, type: 2}

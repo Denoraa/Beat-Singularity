@@ -18,6 +18,7 @@ public class HitManager : MonoSingleton<HitManager>
     private void Init(GameEvents.LevelStartEvent @event)
     {
         this.difficultyConfig = @event.levelConfig.difficultyConfig;
+        FeverManager.Instance.SetConfig(@event.levelConfig.feverConfig);
         isLevelActive = true;
     }
 
@@ -69,8 +70,11 @@ public class HitManager : MonoSingleton<HitManager>
 
             float delta = time - hitTiming;
 
+            float judgementWindowMultiplier = FeverManager.Instance.JudgementWindowMultiplier;
+            float badThreshold = difficultyConfig.badThreshold * judgementWindowMultiplier;
+
             // 只允许在 hitTime 前后 badThreshold 的窗口中判定
-            if (delta < -difficultyConfig.badThreshold || delta > difficultyConfig.badThreshold)
+            if (delta < -badThreshold || delta > badThreshold)
                 continue;
 
             float absDelta = Mathf.Abs(delta);
@@ -87,12 +91,16 @@ public class HitManager : MonoSingleton<HitManager>
             return;
         }
 
-        if (candidateAbsDelta <= difficultyConfig.perfectThreshold)
+        float multiplier = FeverManager.Instance.JudgementWindowMultiplier;
+        float perfectThreshold = difficultyConfig.perfectThreshold * multiplier;
+        float goodThreshold = difficultyConfig.goodThreshold * multiplier;
+
+        if (candidateAbsDelta <= perfectThreshold)
         {
             Debug.Log("Perfect Hit!");
             EventBus.Publish(new GameEvents.NoteJudgeEvent(HitResult.Perfect));
         }
-        else if (candidateAbsDelta <= difficultyConfig.goodThreshold)
+        else if (candidateAbsDelta <= goodThreshold)
         {
             Debug.Log("Good Hit.");
             EventBus.Publish(new GameEvents.NoteJudgeEvent(HitResult.Good));
@@ -101,6 +109,12 @@ public class HitManager : MonoSingleton<HitManager>
         {
             Debug.Log("Bad");
             EventBus.Publish(new GameEvents.NoteJudgeEvent(HitResult.Bad));
+        }
+
+        if (candidate.NoteData.type == NoteType.BlackHole)
+        {
+            Debug.Log("BlackHole Fever Start");
+            FeverManager.Instance.StartFever();
         }
 
         candidate.Consume();
@@ -113,5 +127,3 @@ public class HitManager : MonoSingleton<HitManager>
 
 
 }
-
-

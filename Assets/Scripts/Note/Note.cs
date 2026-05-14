@@ -18,13 +18,21 @@ public class Note : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         if (spriteRenderer != null)
-            switch(noteData.lane)
+            switch(noteData.type)
             {
-                case LaneType.Top:
-                    spriteRenderer.color = Color.blue;
+                case NoteType.BlackHole:
+                    spriteRenderer.color = new Color(0.1f, 0f, 0.25f, 1f);
                     break;
-                case LaneType.Down:
-                    spriteRenderer.color = Color.red;
+                default:
+                    switch(noteData.lane)
+                    {
+                        case LaneType.Top:
+                            spriteRenderer.color = Color.blue;
+                            break;
+                        case LaneType.Down:
+                            spriteRenderer.color = Color.red;
+                            break;
+                    }
                     break;
             }
         rb.velocity = new Vector2(-noteData.speed, 0);
@@ -43,7 +51,7 @@ public class Note : MonoBehaviour
         return true;
     }
 
-    private IEnumerator LifeCycle(float badThreshold)
+    private IEnumerator LifeCycle(float baseBadThreshold)
     {
         ActiveNoteManager.Instance.RegisterNote(this);
 
@@ -51,6 +59,7 @@ public class Note : MonoBehaviour
         {
             if (MusicManager.Instance != null && MusicManager.Instance.MusicSource != null)
             {
+                float badThreshold = baseBadThreshold * FeverManager.Instance.JudgementWindowMultiplier;
                 float missTime = NoteData.hitTime + badThreshold;
                 if (MusicManager.Instance.MusicSource.time > missTime)
                 {
