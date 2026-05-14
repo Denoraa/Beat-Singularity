@@ -16,9 +16,9 @@ public class MainMenuUI : MonoBehaviour
         settingButton = transform.Find("SettingButt").GetComponent<Button>();
         quitButton = transform.Find("QuitButt").GetComponent<Button>();
 
-        // startButton.onClick.AddListener(OnStartButtonClicked);
-        // settingButton.onClick.AddListener(OnSettingButtonClicked);
-        // quitButton.onClick.AddListener(OnQuitButtonClicked);
+        startButton.onClick.AddListener(OnStartButtonClicked);
+        settingButton.onClick.AddListener(OnSettingButtonClicked);
+        quitButton.onClick.AddListener(OnQuitButtonClicked);
     }
     private void OnStartButtonClicked()
     {

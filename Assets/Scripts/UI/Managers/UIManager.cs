@@ -18,8 +18,9 @@ public class UIManager : Singleton<UIManager>
 
     public UIManager()
     {
-        uiCanvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
+        uiCanvas = FindUICanvas();
         UIResources.Add(typeof(MainMenuUI), new UIElement() { Resources = "UI/MainMenuUI", Cache = false });
+        UIResources.Add(typeof(LevelSelectUI), new UIElement() { Resources = "UI/LevelSelectUI", Cache = false });
     }
 
     public T Show<T>()
@@ -36,6 +37,14 @@ public class UIManager : Singleton<UIManager>
             }
             else
             {
+                Component existingUI = UnityEngine.Object.FindObjectOfType(type) as Component;
+                if (existingUI != null)
+                {
+                    info.Instance = existingUI.gameObject;
+                    info.Instance.SetActive(true);
+                    return existingUI.GetComponent<T>();
+                }
+
                 UnityEngine.Object prefab = Resources.Load(info.Resources);
                 if (prefab == null)
                 {
@@ -49,6 +58,19 @@ public class UIManager : Singleton<UIManager>
         }
 
         return default(T);
+    }
+
+    private Canvas FindUICanvas()
+    {
+        GameObject canvasObject = GameObject.Find("UICanvas");
+        if (canvasObject == null)
+            canvasObject = GameObject.Find("Canvas");
+
+        Canvas canvas = canvasObject != null ? canvasObject.GetComponent<Canvas>() : null;
+        if (canvas == null)
+            canvas = UnityEngine.Object.FindObjectOfType<Canvas>();
+
+        return canvas;
     }
 
     public void Close(Type type)
