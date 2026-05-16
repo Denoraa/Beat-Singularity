@@ -1,15 +1,5 @@
 # Beat Singularity
 
-## Itch.io Description / Controls
-
-Beat Singularity is a two-lane rhythm game where the player hits notes when they reach the receiver. Some special Black Hole notes trigger Fever mode, changing the game feel and increasing scoring potential for a short time.
-
-Controls:
-
-- Red / lower lane: `S`, `D`, or `F`
-- Blue / upper lane: `J`, `K`, or `L`
-- Hit the matching lane as notes reach the hit point.
-- The hit buttons now show their key labels in the game UI.
 
 ## Milestone 2 Devlog
 
@@ -46,20 +36,16 @@ Feature summary: I am building the Black Hole / Fever mechanic. Black Hole notes
 
 ### Devlog Q2 - After Coding
 
-The task break-down helped because it gave me a simple order: first make the special note visible, then make it trigger Fever, then connect Fever to scoring and judgement. If I did it again, I would make each test even more specific, such as writing the exact chart row I expect to spawn a Black Hole note and the exact score value I expect during Fever mode.
+The task break-down helped because it gave me a simple order: first make the special note visible, then make it trigger Fever, then connect Fever to scoring and judgement. If I did it again, 
+I would make each test even more specific, such as writing the exact chart row I expect to spawn a Black Hole note and the exact score value I expect during Fever mode.
 
 ### Devlog Q3 - Visual Scripting and Code Bridge
 
-I bridge Visual Scripting and code with `Assets/Scripts/VisualScripting/EventBusVisualScriptingBridge.cs`. That C# script listens for code-side `GameEvents.LevelStartEvent` and `GameEvents.NoteJudgeEvent`, then sends Visual Scripting custom events named `LevelStartEvent` and `NoteJudgeEvent` into the graph. The purpose is to keep core gameplay logic in C# while letting the combo UI logic live in the Visual Scripting graph.
+I bridge Visual Scripting and code with `Assets/Scripts/VisualScripting/EventBusVisualScriptingBridge.cs`. That C# script listens for code-side `GameEvents.LevelStartEvent` and `GameEvents.NoteJudgeEvent`, 
+then sends Visual Scripting custom events named `LevelStartEvent` and `NoteJudgeEvent` into the graph. The purpose is to keep core gameplay logic in C# while letting the combo UI logic live in the Visual Scripting graph.
 
-![Combo Manager Visual Scripting graph](https://github.com/user-attachments/assets/f6d4efa2-8d38-4608-ade8-cd60e6faf6de)
+[Combo Manager Visual Scripting graph](https://github.com/user-attachments/assets/f6d4efa2-8d38-4608-ade8-cd60e6faf6de)
 
 ### Devlog Q4 - Unity System to Grade
 
 Please grade the Visual Scripting system. It is the Combo Manager graph at `Assets/Graphs/ComboManagerGraph.asset`, connected through `Assets/Scripts/VisualScripting/EventBusVisualScriptingBridge.cs` and used in `Assets/Scenes/VSScene.unity`.
-
-## Submission Notes
-
-- Make a new Itch page for Milestone 2 instead of updating the Milestone 1 page.
-- Paste the controls from the first section into the Itch description.
-- Recommended Itch embed size: `960 x 540`, with fullscreen enabled.
