@@ -22,7 +22,7 @@ public static class SpeedCalculator
             return 0f;
         }
 
-        float distance = Vector3.Distance(spawnPoint.position, hitPoint.position);
+        float distance = Mathf.Abs(spawnPoint.position.x - hitPoint.position.x);
         float speed = distance / data.spawnLeadTime;
 
         return speed;

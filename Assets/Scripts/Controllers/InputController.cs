@@ -14,8 +14,8 @@ public class InputController : MonoBehaviour
     private InputAction KHitAction;
     private InputAction LHitAction;
     private bool isLevelActive;
-
-
+    private int lastDownHitFrame = -1;
+    private int lastTopHitFrame = -1;
 
     private void Awake()
     {
@@ -75,6 +75,10 @@ public class InputController : MonoBehaviour
         if (!isLevelActive)
             return;
 
+        if (lastDownHitFrame == Time.frameCount)
+            return;
+
+        lastDownHitFrame = Time.frameCount;
         EventBus.Publish(new GameEvents.DownHitEvent());
     }
 
@@ -83,6 +87,10 @@ public class InputController : MonoBehaviour
         if (!isLevelActive)
             return;
 
+        if (lastTopHitFrame == Time.frameCount)
+            return;
+
+        lastTopHitFrame = Time.frameCount;
         EventBus.Publish(new GameEvents.TopHitEvent());
     }
 
@@ -106,6 +114,8 @@ public class InputController : MonoBehaviour
     private void OnLevelStart(GameEvents.LevelStartEvent eventData)
     {
         isLevelActive = true;
+        lastDownHitFrame = -1;
+        lastTopHitFrame = -1;
         SetInputEnabled(true);
     }
 

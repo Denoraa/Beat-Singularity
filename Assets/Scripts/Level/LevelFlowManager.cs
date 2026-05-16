@@ -5,11 +5,20 @@ using UnityEngine.UI;
 
 public class LevelFlowManager : MonoSingleton<LevelFlowManager>
 {
+    private enum LevelFlowState
+    {
+        LoadChart,
+        Ready,
+        Playing,
+        End
+    }
+
     private AudioClip currentSong = null;
     private float SongDuration = 0;
     private GameObject gameOverPanel;
     private TextMeshProUGUI gameOverText;
     private bool levelEnded;
+    private LevelFlowState currentState;
 
     //Test File
     [SerializeField] private LevelConfigSO testLevelConfig;
@@ -33,9 +42,14 @@ public class LevelFlowManager : MonoSingleton<LevelFlowManager>
         Time.timeScale = 1f;
         levelEnded = false;
         HideGameOverUI();
+        SetState(LevelFlowState.LoadChart);
         InitSongData(levelConfig);
         FeverManager.Instance.SetConfig(levelConfig.feverConfig);
 
+        SetState(LevelFlowState.Ready);
+        yield return null;
+
+        SetState(LevelFlowState.Playing);
         EventBus.Publish(new GameEvents.LevelStartEvent(levelConfig));
 
         yield return new WaitForSeconds(SongDuration);
@@ -61,9 +75,16 @@ public class LevelFlowManager : MonoSingleton<LevelFlowManager>
             return;
 
         levelEnded = true;
+        SetState(LevelFlowState.End);
         EventBus.Publish(new GameEvents.LevelEndEvent());
         ShowGameOverUI();
         Time.timeScale = 0f;
+    }
+
+    private void SetState(LevelFlowState nextState)
+    {
+        currentState = nextState;
+        Debug.Log($"Level flow state: {currentState}");
     }
 
     private void CreateGameOverUI()

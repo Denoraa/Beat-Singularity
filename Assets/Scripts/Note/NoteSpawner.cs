@@ -5,6 +5,7 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private GameObject tapNotePrefab;
     [SerializeField] private GameObject blackHoleNotePrefab;
     [SerializeField] private Transform[] laneSpawnPoints;
+    [SerializeField] private Transform hitPoint;
 
     private void OnEnable()
     {
@@ -37,6 +38,10 @@ public class NoteSpawner : MonoBehaviour
         }
 
         Transform spawnPoint = laneSpawnPoints[((int)noteData.lane)];
+        Transform receiver = GetHitPoint();
+        if (receiver != null)
+            noteData.speed = SpeedCalculator.CalculateNoteSpeed(noteData, spawnPoint, receiver);
+
         GameObject noteObj = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
 
         Note noteComponent = noteObj.GetComponent<Note>();
@@ -58,5 +63,20 @@ public class NoteSpawner : MonoBehaviour
                 Debug.LogWarning($"未知 note type: {noteType}");
                 return null;
         }
+    }
+
+    private Transform GetHitPoint()
+    {
+        if (hitPoint != null)
+            return hitPoint;
+
+        GameObject receiver = GameObject.Find("HitReciver");
+        if (receiver == null)
+            receiver = GameObject.Find("HitReceiver");
+
+        if (receiver != null)
+            hitPoint = receiver.transform;
+
+        return hitPoint;
     }
 }

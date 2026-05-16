@@ -43,7 +43,7 @@ MonoBehaviour:
     spawnTime: 3.1999998
   - measure: 4
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 6.2
     speed: 15.51
@@ -59,7 +59,7 @@ MonoBehaviour:
     spawnTime: 7.2
   - measure: 6
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 10.2
     speed: 15.51
@@ -83,7 +83,7 @@ MonoBehaviour:
     spawnTime: 13.2
   - measure: 9
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 16.2
     speed: 15.51
@@ -99,7 +99,7 @@ MonoBehaviour:
     spawnTime: 17.2
   - measure: 11
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 20.2
     speed: 15.51
@@ -115,7 +115,7 @@ MonoBehaviour:
     spawnTime: 21.2
   - measure: 13
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 24.2
     speed: 15.51
@@ -155,7 +155,7 @@ MonoBehaviour:
     spawnTime: 31.2
   - measure: 18
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 34.2
     speed: 15.51
@@ -211,7 +211,7 @@ MonoBehaviour:
     spawnTime: 45.2
   - measure: 25
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 48.2
     speed: 15.51
@@ -219,8 +219,8 @@ MonoBehaviour:
     spawnTime: 47.2
   - measure: 26
     beat: 1
-    lane: 0
-    type: 0
+    lane: 1
+    type: 4
     hitTime: 50.2
     speed: 15.51
     spawnLeadTime: 1
@@ -235,7 +235,7 @@ MonoBehaviour:
     spawnTime: 51.2
   - measure: 28
     beat: 1
-    lane: 0
+    lane: 1
     type: 0
     hitTime: 54.2
     speed: 15.51
